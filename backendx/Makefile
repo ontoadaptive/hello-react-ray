@@ -23,6 +23,9 @@ install:
 run:
 	python3 simples_server.py
 
+run2:
+	python3 more_simple.py
+
 start-cluster:
 	ray start --head
 
