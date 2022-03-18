@@ -1,3 +1,6 @@
+# ray
 ray[serve]
-# requests
 scikit-learn
+
+# flask
+flask
