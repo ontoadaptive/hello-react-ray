@@ -1,0 +1,11 @@
+# ray
+ray[serve]
+starlette
+scikit-learn
+
+# fastapi
+fastapi
+uvicorn
+
+# flask
+flask
