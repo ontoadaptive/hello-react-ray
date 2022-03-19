@@ -20,12 +20,6 @@ install:
 	python3 -m pip install --upgrade pip
 	pip install -r requirements.txt
 
-run:
-	python3 simples_server.py
-
-run2:
-	python3 more_simple.py
-
 start-cluster:
 	ray start --head
 
@@ -34,11 +28,22 @@ stop-cluster:
 
 stop: stop-cluster
 
-curl:
-	curl -H "Origin: http://localhost" http://localhost:8000/simples
-
-test:
-	python3 test_request.py
-
 clean:
 	rm -fr venv
+
+run:
+	# NA.
+	# NOTE: AG3. This is expected case.
+	# python3 simples_server.py
+	uvicorn main:app --reload
+
+	# NA.
+	# NOTE: AG3. This is optimistic case.  Take it further.
+	# python3 iris_ml_server.py
+
+	# NA.
+	# NOTE: AG3. This is pessimistic case.
+	# python3 more_simple.py
+
+curl:
+	curl -X GET -H "Origin: http://localhost" http://localhost:8000/simples

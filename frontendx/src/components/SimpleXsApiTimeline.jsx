@@ -3,7 +3,7 @@ import Plot from 'react-plotly.js';
 import httpClient from '../infra/httpClient';
 
 // NA.
-// - MP study this carefully.  Ask more questions regarding HTTP headers and why.
+// - MP ignore this until AG3 connects bridge.  This should eventually be an approach to plug into full Ray
 const SimpleTimeline = () => {
     const [data, setData] = useState();
 
@@ -16,7 +16,7 @@ const SimpleTimeline = () => {
             'Access-Control-Allow-Origin': '*'
         };
         httpClient
-            .get("/simples", { headers })       
+            .get("/Simple/xs", { headers })            
             .then((response) => {
                 const simples = response.data;
                 console.log('simples: ', simples);
@@ -52,7 +52,7 @@ const SimpleTimeline = () => {
         <div>
             <Plot
                 data={data}
-                layout={{ width: 320, height: 240, title: 'A Fancy Plot 2' }}
+                layout={{ width: 320, height: 240, title: 'A Fancy Plot 3' }}
             />
         </div>
     );
