@@ -6,10 +6,10 @@ help:
 	@echo make stop-cluster
 	@echo make start-server
 	@echo make deploy1
-	@echo make deploy2
 	@echo ""
 	@echo make run
 	@echo make test
+	@echo make all
 	@echo ""
 	@echo make clean
 
@@ -31,19 +31,24 @@ stop: stop-cluster
 clean:
 	rm -fr venv
 
-run:
+run: stop-cluster start-cluster
+	python3 main.py
+	
 	# NA.
-	# NOTE: AG3. This is expected case.
-	# python3 simples_server.py
-	uvicorn main:app --reload
+	# NOTE: AG3. This is even more optimistic case.  Take it further.
+	# python3 iris_ml_server.py	
 
-	# NA.
-	# NOTE: AG3. This is optimistic case.  Take it further.
-	# python3 iris_ml_server.py
+test:
+	@echo health check 1
+	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api1/
+	@echo ""
+	@echo health check 2
+	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api2/			
+	@echo ""
+	@echo predict 1
+	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api1/predict
+	@echo ""
+	@echo predict 2
+	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api2/predict?x=1
 
-	# NA.
-	# NOTE: AG3. This is pessimistic case.
-	# python3 more_simple.py
-
-curl:
-	curl -X GET -H "Origin: http://localhost" http://localhost:8000/simples
+all: run test
