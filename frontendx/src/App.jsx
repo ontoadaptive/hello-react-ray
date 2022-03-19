@@ -2,7 +2,8 @@ import './App.css'
 
 import {
   SimpleTimeline,
-  SimpleApiTimeline
+  SimpleApiTimeline,
+  SimpleXsApiTimeline,
 } from "./components";
 
 function App() {
@@ -10,7 +11,14 @@ function App() {
     <div>
       <SimpleTimeline />
       <hr />
-      <SimpleApiTimeline />      
+      <SimpleApiTimeline />
+      {/*
+      // NA.
+      // - NOTE: MP ignore this until AG3 connects bridge.  
+      // This should eventually be an approach to plug into full Ray
+      <hr />
+      <SimpleXsApiTimeline />                        
+      */}
     </div>
   )
 }
