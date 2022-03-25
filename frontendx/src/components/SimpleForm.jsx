@@ -15,6 +15,11 @@ const SimpleForm = () => {
     }, []);
     */
         
+    /*
+    NOTE:
+    - MP. Consider below later.  Ignore uncontrolled input browser warnings for now.
+    - https://dev.to/stanleyjovel/simplify-controlled-components-with-react-hooks-23nn
+    */
     const handleFormInput = (e) => {
         setFormData({[e.target.name]: e.target.value})
     }
@@ -87,7 +92,7 @@ const SimpleForm = () => {
             name="result" 
             onChange={handleResponse}             
             placeholder="Result" 
-            value={resultData}/>
+            value={resultData.y}/>
             <br/>            
 
             <button onClick={handleSubmit}>Submit</button> 
