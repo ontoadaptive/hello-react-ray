@@ -1,7 +1,8 @@
 import ray
+from ray import serve
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from ray import serve
+from starlette.responses import JSONResponse
 
 app = FastAPI()
 origins = [
@@ -44,11 +45,34 @@ class Model1:
 @serve.ingress(app)
 class Model2:
     @app.get("/predict")
-    def double(self, x: int):
-        return 2 * x
-
     def method(self, x: int):
-        return "Predict 2! y: " + double(x)
+        def double(x: int):
+            return 2 * x
+
+        return "Predict 2! y: " + str(double(x))
+
+@serve.deployment(route_prefix="/api3")
+@serve.ingress(app)
+class Model3:
+    @app.get("/predict")
+    def method(self, x: int):
+        def double(x: int):
+            return 2 * x
+
+        def getJson(x: int):
+            # NA.
+            # NOTE:
+            # - MP below are hard wired to construct JSON but you need to formally JSON encode
+            # return '{"y": 4}'
+            # return '{"y:"' + str(double(x)) + "}"
+            # return '{"y": {0}}'.format(y)
+            # return JSON.stringify(json)
+            y = double(x)
+            json = JSONResponse({'y': y})
+            return json
+
+        return getJson(x)        
 
 Model1.deploy()
 Model2.deploy()
+Model3.deploy()

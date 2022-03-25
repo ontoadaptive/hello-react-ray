@@ -19,3 +19,6 @@ lint:
 
 run:
 	yarn dev
+
+clean:
+	rm -rf ./node_modules
