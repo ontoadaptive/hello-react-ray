@@ -50,5 +50,9 @@ test:
 	@echo ""
 	@echo predict 2
 	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api2/predict?x=1
+	@echo ""
+	@echo predict 3
+	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api3/predict?x=1	
+	@echo ""
 
 all: run test

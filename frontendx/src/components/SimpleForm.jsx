@@ -6,7 +6,7 @@ const SimpleForm = () => {
         param1: '',
         param2: ''
     });
-    const [resultData , setResultData] = useState();
+    const [resultData , setResultData] = useState(" ");
 
     /*
     NOTE:
@@ -18,6 +18,11 @@ const SimpleForm = () => {
     const handleFormInput = (e) => {
         setFormData({[e.target.name]: e.target.value})
     }
+
+    const handleResponse = (e) => {
+        // NA.
+        // - No op. Just so the browser does not complain    
+    }    
     
     const handleDebugSubmit = () => {
         alert(formData.param1)
@@ -28,30 +33,35 @@ const SimpleForm = () => {
         // NOTE:
         // - MP. Connect bridge here.
         // - MP. Debug and extend this on your own.
-        /*
         const headers = {
             'Content-Type': 'application/json;charset=UTF-8',
             'Access-Control-Allow-Origin': '*'
         };
-        const url = "/api1/predict?x=${formData.param1}"
+        // NA.
+        // NOTE:
+        // - MP. api3 will take param1 and return JSON.
+        // - MP. below back ticks are for literal template strings.
+        const url = `/api3/predict?x=${formData.param1}`
         httpClient
             .get(url, { headers })       
             .then((response) => {
-                const predicts = response.data
-                console.log('predicts: ', predicts)
-                let ys = predicts.map(x => x["id"])
+                const y_pred = response.data
+                console.log('y_pred: ', y_pred)
+                setResultData(y_pred)
+                /*
+                NOTE:
+                - MP. if you were to map against list.
+                let ys = ys.map(x => x["id"])
                 if (ys != null) {
                     console.log('ys: ', ys)
                 }
                 setResultData(ys)
+                */
             })
             .catch((error) => {
                 const msg = "Error getting data" + error
                 console.error(msg)
-            });
-        */
-        const ys = 2
-        setResultData(ys)      
+            }); 
     }
 
     return (
@@ -75,6 +85,7 @@ const SimpleForm = () => {
             <input 
             type="text" 
             name="result" 
+            onChange={handleResponse}             
             placeholder="Result" 
             value={resultData}/>
             <br/>            
