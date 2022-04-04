@@ -5,12 +5,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 
 app = FastAPI()
-origins = [
-    "http://localhost",  
-    "http://localhost:3000",
-]
+# NA
+# - allow any origins for now.
+# origins = [
+#     "http://localhost",  
+#     "http://localhost:3000",
+# ]
+origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
+    # allow_origins=origins,
     allow_origins=origins,
     allow_credentials=False,
     allow_methods=["*"],
@@ -18,7 +22,9 @@ app.add_middleware(
 )
 
 ray.init(address="auto", namespace="backendx")
-serve.start(detached=True)
+# NA. Expose port
+# serve.start(detached=True)
+serve.start(detached=True, http_options={"host": "0.0.0.0"})
 
 @app.get("/")
 def health_check():
@@ -34,6 +40,7 @@ async def predict():
     return {"y": 2}    
 '''
 
+'''
 @serve.deployment(route_prefix="/api1")
 @serve.ingress(app)
 class Model1:
@@ -50,6 +57,7 @@ class Model2:
             return 2 * x
 
         return "Predict 2! y: " + str(double(x))
+'''
 
 @serve.deployment(route_prefix="/api3")
 @serve.ingress(app)
@@ -73,6 +81,7 @@ class Model3:
 
         return getJson(x)        
 
-Model1.deploy()
-Model2.deploy()
+# Model1.deploy()
+# Model2.deploy()
+# NA. Just use model 3 for testing passed param1
 Model3.deploy()

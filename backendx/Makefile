@@ -38,21 +38,22 @@ run: stop-cluster start-cluster
 	# NOTE: AG3. This is even more optimistic case.  Take it further.
 	# python3 iris_ml_server.py	
 
+	# NA. Remove to just focus on predict 3
+	# @echo health check 1
+	# curl -X GET -H "Origin: http://localhost" http://localhost:8000/api1/
+	# @echo ""
+	# @echo health check 2
+	# curl -X GET -H "Origin: http://localhost" http://localhost:8000/api2/			
+	# @echo ""
+	# @echo predict 1
+	# curl -X GET -H "Origin: http://localhost" http://localhost:8000/api1/predict
+	# @echo ""
+	# @echo predict 2
+	# curl -X GET -H "Origin: http://localhost" http://localhost:8000/api2/predict?x=1
+	# @echo ""
 test:
-	@echo health check 1
-	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api1/
-	@echo ""
-	@echo health check 2
-	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api2/			
-	@echo ""
-	@echo predict 1
-	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api1/predict
-	@echo ""
-	@echo predict 2
-	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api2/predict?x=1
-	@echo ""
 	@echo predict 3
-	curl -X GET -H "Origin: http://localhost" http://localhost:8000/api3/predict?x=1	
+	curl -X GET http://localhost:8000/api3/predict?x=1	
 	@echo ""
 
 all: run test

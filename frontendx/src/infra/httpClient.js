@@ -1,8 +1,11 @@
 /* eslint-disable prefer-template */
 import axios from "axios";
 
+// const HTTPCLIENT_BASE_URL = "http://localhost:8000";
 // const HTTPCLIENT_BASE_URL = process.env.HTTPCLIENT_BASE_URL || "http://localhost:8000";
-const HTTPCLIENT_BASE_URL = "http://localhost:8000";
+// NA.
+// - MP. This is Vite specific.
+const HTTPCLIENT_BASE_URL = import.meta.env.VITE_HTTPCLIENT_BASE_URL
 console.log("HTTPCLIENT_BASE_URL: " + HTTPCLIENT_BASE_URL);
 
 // NA.
