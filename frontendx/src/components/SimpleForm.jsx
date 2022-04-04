@@ -6,7 +6,7 @@ const SimpleForm = () => {
         param1: '',
         param2: ''
     });
-    const [resultData , setResultData] = useState(" ");
+    const [resultData , setResultData] = useState('');
 
     /*
     NOTE:
@@ -69,6 +69,8 @@ const SimpleForm = () => {
             }); 
     }
 
+	// NA. Remove uncontrolled form warnings.
+	// https://thewebdev.info/2021/09/18/how-to-fix-the-a-component-is-changing-an-uncontrolled-input-of-type-text-to-be-controlled-error-in-react/
     return (
        <div>
             <input 
@@ -76,7 +78,7 @@ const SimpleForm = () => {
             name="param1" 
             onChange={handleFormInput} 
             placeholder="Parameter1" 
-            value={formData.param1}/>
+            value={formData.param1 ?? ""}/>
             <br/>
 
             <input 
@@ -84,7 +86,7 @@ const SimpleForm = () => {
             name="param2" 
             onChange={handleFormInput} 
             placeholder="Parameter2" 
-            value={formData.param2}/>
+            value={formData.param2 ?? ""}/>
             <br/>
 
             <input 
@@ -92,7 +94,7 @@ const SimpleForm = () => {
             name="result" 
             onChange={handleResponse}             
             placeholder="Result" 
-            value={resultData.y}/>
+            value={resultData.y ?? ""}/>
             <br/>            
 
             <button onClick={handleSubmit}>Submit</button> 
