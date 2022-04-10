@@ -6,40 +6,27 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 
 import {
   SimpleForm,
-  MuiForm
+  SimpleTimeline
 } from "./components";
 
 function App() {
-  /* 
-    return (
-    <div>
-      <SimpleForm />
-    </div>
-    )
-  ) */
   return (
     <Router>
-	<p>
-		hello-react-ray
-	</p>
-	<p>
-		This is a SMALL BATCH exercise for HYBRID-FALL2022-PPOD.
-	</p>
+      <p>
+        hello-react-ray
+      </p>
+      <p>
+        This is a SMALL BATCH exercise for HYBRID-FALL2022-PPOD.
+      </p>
       <ul>
         <li><Link to='/route1'>Simple Form</Link></li>
-        <li><Link to='/route2'>MUI Form </Link></li>
+        <li><Link to='/route2'>Simple Timeline </Link></li>
       </ul>
 
       <div>
-	{/*
-        <Switch>
-          <Route path="/route1" component={SimpleForm} />
-          <Route path="/route2" component={MuiForm} />
-        </Switch>
-	*/}
         <Routes>
-		<Route path="/route1" element={<SimpleForm />} />
-		<Route path="/route2" element={<MuiForm />} />
+          <Route path="/route1" element={<SimpleForm />} />
+          <Route path="/route2" element={<SimpleTimeline />} />
         </Routes>
       </div>
     </Router>

@@ -50,6 +50,9 @@ const SimpleTimeline = () => {
 
     return (
         <div>
+            <p>
+                Simple Timeline
+            </p>
             <Plot
                 data={data}
                 layout={{ width: 320, height: 240, title: 'A Fancy Plot 1' }}
