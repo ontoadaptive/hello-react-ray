@@ -73,6 +73,9 @@ const SimpleForm = () => {
 	// https://thewebdev.info/2021/09/18/how-to-fix-the-a-component-is-changing-an-uncontrolled-input-of-type-text-to-be-controlled-error-in-react/
     return (
        <div>
+	       <p>
+		       Simple Form
+		</p>
             <input 
             type="text" 
             name="param1" 
