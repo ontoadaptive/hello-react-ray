@@ -1,4 +1,5 @@
-# Sprint-20210408
+# README
+
 ## Frontend
 - Fix. React uncontrolled form warnings.
 - Update Makefiles
@@ -7,4 +8,3 @@
 - Add target server IP scripts for dynamic target IP address
 - Fix. Ray serve CORS origins list.
 - Reduce working folders to just frontendx/ and backendx/
-
