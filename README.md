@@ -1,10 +1,11 @@
 # README
 
-## Frontend
-- Fix. React uncontrolled form warnings.
-- Update Makefiles
-- Rework Vite specific environment variable from both client and server
-## Backend
-- Add target server IP scripts for dynamic target IP address
-- Fix. Ray serve CORS origins list.
-- Reduce working folders to just frontendx/ and backendx/
+## Exercise X.Y:  Full Stack web app.
+- Frontend
+  - React
+  - New Vite configuration
+  
+- Backend
+  - Ray serve
+  - CORS origin list
+  - New Vite configuration (i.e., requires environment variable)
